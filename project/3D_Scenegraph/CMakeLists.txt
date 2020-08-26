@@ -16,7 +16,7 @@ IF (WIN32)
     # Copy dll files to ${CMAKE_CURRENT_BINARY_DIR}/Debug
     file(COPY ${DLLFileList} DESTINATION Debug)
     file(COPY ${DLLFileList} DESTINATION Release)
-    file(COPY ${DLLFileList} DESTINATION .)
+    file(COPY ${DLLFileList} DESTINATION ./)
 
     # Set working directory to ${CMAKE_CURRENT_BINARY_DIR}/Debug
     set_target_properties(SRE-Scenegraph PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Debug)
