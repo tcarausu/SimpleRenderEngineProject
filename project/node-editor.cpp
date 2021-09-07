@@ -765,7 +765,7 @@ class NodeEditor {
 public:
     NodeEditor()
     {
-        r.init();
+        r.init().withSdlWindowFlags(SDL_WINDOW_OPENGL);
         r.setWindowTitle("Lua example");
 
         l.addLight(Light::create().withDirectionalLight({1,1,1}).withColor({1,1,1}).build());

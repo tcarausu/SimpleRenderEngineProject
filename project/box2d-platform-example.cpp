@@ -67,7 +67,8 @@ public:
     Box2DPlatform()
     :m_world({0.0f,-98.0f})
     {
-        m_world.SetDebugDraw(&debugDraw);                                           // enable debug draw (line drawing on colliders)
+        // enable debug draw (line drawing on colliders)
+        m_world.SetDebugDraw(&debugDraw);
 
         glm::ivec2 windowSize(800,600);
         r.setWindowSize(windowSize);
@@ -88,7 +89,8 @@ public:
 
         player = spawnBox(b2_dynamicBody, windowSize.x/2, 30, 10, 10);
 
-        r.frameUpdate = [&](float deltaTime){                                       // Update physics simulation before rendering
+        // Update physics simulation before rendering
+        r.frameUpdate = [&](float deltaTime){
             time += deltaTime;
             physicsUpdate();
         };
@@ -106,9 +108,9 @@ public:
     void physicsUpdate(){
         updateMovingPlatforms();
 
-        float fixedDeltaTime = 0.016f;                                          // Run physics simulation
-        int32 velocityIterations = 8;                                           // how strongly to correct velocity
-        int32 positionIterations = 3;                                           // how strongly to correct position
+        float fixedDeltaTime = 0.016f;   // Run physics simulation
+        int32 velocityIterations = 8;    // how strongly to correct velocity
+        int32 positionIterations = 3;    // how strongly to correct position
         m_world.Step(fixedDeltaTime,velocityIterations,positionIterations);
     }
 
@@ -188,8 +190,8 @@ public:
     b2Fixture* spawnBox(b2BodyType type, int posX, int posY, float sizeX, float sizeY, float elasticity = 0.8) {
         b2BodyDef myBodyDef;
         myBodyDef.type = type;
-        myBodyDef.position.Set(posX,posY);      //set the starting position
-        myBodyDef.angle = 0;                        //set the starting angle
+        myBodyDef.position.Set(posX,posY);  //set the starting position
+        myBodyDef.angle = 0;                //set the starting angle
         auto dynBody = m_world.CreateBody(&myBodyDef);
 
         b2PolygonShape boxShape;
@@ -197,8 +199,8 @@ public:
 
         b2FixtureDef boxFixtureDef;
         boxFixtureDef.shape = &boxShape;
-        boxFixtureDef.restitution = elasticity;   // elasticity [0;1]
-        boxFixtureDef.density = 1;         // weight
+        boxFixtureDef.restitution = elasticity;  // elasticity [0;1]
+        boxFixtureDef.density = 1;               // weight
         auto res = dynBody->CreateFixture(&boxFixtureDef);
         return res;
     }
@@ -206,17 +208,17 @@ public:
     b2Fixture* spawnCircle(b2BodyType type, float posX, float posY, float radius = 1) {
         b2BodyDef myBodyDef;
         myBodyDef.type = type;
-        myBodyDef.position.Set(posX,posY);      //set the starting position
-        myBodyDef.angle = 0;                        //set the starting angle
+        myBodyDef.position.Set(posX,posY);  //set the starting position
+        myBodyDef.angle = 0;                //set the starting angle
         auto dynBody = m_world.CreateBody(&myBodyDef);
 
         b2CircleShape circleShape;
-        circleShape.m_radius = radius; //radius
+        circleShape.m_radius = radius;  //radius
 
         b2FixtureDef boxFixtureDef;
         boxFixtureDef.shape = &circleShape;
-        boxFixtureDef.restitution = 0.8;   // elasticity [0;1]
-        boxFixtureDef.density = 1;         // weight
+        boxFixtureDef.restitution = 0.8;  // elasticity [0;1]
+        boxFixtureDef.density = 1;        // weight
         auto res = dynBody->CreateFixture(&boxFixtureDef);
 
         return res;

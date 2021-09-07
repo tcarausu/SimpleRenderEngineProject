@@ -53,7 +53,8 @@ public:
             ImGui::DragFloat3("Local Position",&position.x);
             ImGui::DragFloat3("Local Rotation",&rotationEuler.x);
             ImGui::DragFloat3("Local Scale",&scale.x);
-            auto globalPos = localToWorld() * glm::vec4(0,0,0,1); // transform 0,0,0 (pivot point) from local coordinate frame to global coordinate frame
+            // transform 0,0,0 (pivot point) from local coordinate frame to global coordinate frame
+            auto globalPos = localToWorld() * glm::vec4(0,0,0,1);
             bool changed = ImGui::DragFloat3("Global Position",&globalPos.x);
             if (changed){
                 if (parent){
@@ -81,7 +82,7 @@ public:
 class SceneGraphExample {
 public:
     SceneGraphExample(){
-        r.init();
+        r.init().withSdlWindowFlags(SDL_WINDOW_OPENGL);
 
         camera.setPerspectiveProjection(60,0.1,100);
 

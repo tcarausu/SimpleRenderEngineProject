@@ -17,7 +17,7 @@ public:
     {
 
 
-        r.init();
+        r.init().withSdlWindowFlags(SDL_WINDOW_OPENGL);
         r.setWindowTitle("Empty project - See console output");
 
         camera.setWindowCoordinates();

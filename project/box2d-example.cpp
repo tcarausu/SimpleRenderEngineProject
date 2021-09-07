@@ -65,17 +65,19 @@ public:
     Box2D()
     :m_world({0.0f,-98.0f})
     {
+        // enable debug draw (line drawing on colliders)
+        m_world.SetDebugDraw(&debugDraw);
 
-        m_world.SetDebugDraw(&debugDraw);                                           // enable debug draw (line drawing on colliders)
-
-        r.init();
+        r.init().withSdlWindowFlags(SDL_WINDOW_OPENGL);
         r.setWindowTitle("Box2D example. Drag mouse to spawn boxes.");
 
         camera.setWindowCoordinates();
 
-        atlas = SpriteAtlas::createSingleSprite(Texture::getWhiteTexture());        // Create white test sprite
+        // Create white test sprite
+        atlas = SpriteAtlas::createSingleSprite(Texture::getWhiteTexture());
 
-        b2BodyDef myBodyDef;                                                        // Setup phys
+        // Setup phys
+        b2BodyDef myBodyDef;
         myBodyDef.type = b2_staticBody; //this will be a static body (does not move)
         myBodyDef.position.Set(0, 0); //set the starting position
         auto m_groundBody = m_world.CreateBody(&myBodyDef);
@@ -88,10 +90,10 @@ public:
         boxFixtureDef.density = 1;
         m_groundBody->CreateFixture(&boxFixtureDef);
 
-        r.frameUpdate = [&](float deltaTime){                                       // Update physics simulation before rendering
+        r.frameUpdate = [&](float deltaTime){   // Update physics simulation before rendering
             float fixedDeltaTime = 0.016f;
-            int32 velocityIterations = 8;                                           //how strongly to correct velocity
-            int32 positionIterations = 3;                                           //how strongly to correct position
+            int32 velocityIterations = 8;       //how strongly to correct velocity
+            int32 positionIterations = 3;       //how strongly to correct position
             m_world.Step(fixedDeltaTime,velocityIterations,positionIterations);
         };
         r.frameRender = [&](){

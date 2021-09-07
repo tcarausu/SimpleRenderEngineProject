@@ -123,6 +123,3 @@ void RPG::render(){
     }
 }
 
-int main(){
-    RPG rpg;
-}

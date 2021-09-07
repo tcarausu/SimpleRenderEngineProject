@@ -20,7 +20,7 @@ class LuaExample {
 public:
     LuaExample()
     {
-        r.init();
+        r.init().withSdlWindowFlags(SDL_WINDOW_OPENGL);
         r.setWindowTitle("Lua example");
 
         objPosition = {5.5f,0,0};

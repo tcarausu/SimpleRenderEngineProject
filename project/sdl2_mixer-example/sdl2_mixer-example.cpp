@@ -12,7 +12,7 @@ using namespace std;
 class MixerExample{
 public:
     MixerExample(){
-        r.init();
+        r.init().withSdlWindowFlags(SDL_WINDOW_OPENGL);
         r.setWindowTitle("SDL2_mixer example");
 
         // Initialize SDL_mixer. Lazy Foo's description: http://lazyfoo.net/SDL_tutorials/lesson11/index.php

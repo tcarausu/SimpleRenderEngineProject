@@ -62,7 +62,7 @@ std::shared_ptr<Scene> createScene(){
 int main(){
     using namespace sre;
     SDLRenderer r;
-    r.init();
+    r.init().withSdlWindowFlags(SDL_WINDOW_OPENGL);
     auto scene = createScene();
 
     r.frameUpdate = [&](float deltaTime){

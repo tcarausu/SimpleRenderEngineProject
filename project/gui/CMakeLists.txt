@@ -5,7 +5,7 @@ file(GLOB GuiSrc
         )
 
 # Compile cpp files
-add_executable(SRE-Gui ${GuiSrc})
+add_executable(SRE-Gui ${GuiSrc} main.cpp)
 target_link_libraries(SRE-Gui ${all_libs})
 
 file(COPY assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug)

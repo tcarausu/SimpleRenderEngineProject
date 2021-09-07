@@ -19,7 +19,7 @@ using namespace sre;
 class ParticleSystemExample{
 public:
     ParticleSystemExample(){
-        r.init();
+        r.init().withSdlWindowFlags(SDL_WINDOW_OPENGL);
 
         textures.push_back(Texture::getSphereTexture());
         textures.push_back(Texture::getWhiteTexture());

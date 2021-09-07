@@ -8,6 +8,7 @@ bin/
 /cmake-build-debug/*
 /cmake-build-release/*
 /.idea/*
+.idea/
 
 #################
 ## Visual Studio
@@ -144,4 +145,6 @@ UpgradeLog*.htm
 App_Data/*.mdf
 App_Data/*.ldf
 
-.idea/
+
+# MacOS
+*.DS_Store
