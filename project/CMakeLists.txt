@@ -42,6 +42,8 @@ add_subdirectory(Box2DTestbed)
 add_subdirectory(platformer)
 add_subdirectory(particle_system)
 add_subdirectory(gui)
+add_subdirectory(GP_Final_Project)
+
 IF (USE_BULLET)
 	add_subdirectory(3D_Scenegraph)
 ENDIF(USE_BULLET)

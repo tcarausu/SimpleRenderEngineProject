@@ -174,6 +174,8 @@ ENDIF(WIN32)
 
 # build sre library
 add_subdirectory(submodules/SimpleRenderEngine)
+#add_subdirectory(GP_Final_Project)
+
 include_directories(${SRE_INCLUDE})
 
 # build targets using sre
